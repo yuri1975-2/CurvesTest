@@ -70,6 +70,15 @@ void printCurve(const int number, const ICurve* const curve)
 
 decltype(auto) isCircle(const ICurve* const curve)
 {
+	// here, it is intentionally dynacast is unused
+	// I believe we should to work with interfaces but not with definitive implementations of these interfaces
+	//
+	// for instance, suppose implementations of ICurve (Helixe, Ellipse, Circle) are placed in standalone
+	// project which is used in different solutions (MSVS). Then changing name of Circle class will
+	// lead to necessary to change any places in solution(s) where is dynacast used.
+	//
+	// also, similar problem will arise if we use ICurve specific implementations as library
+	
 	auto retValue(false);
 	
 	if (nullptr == curve)
